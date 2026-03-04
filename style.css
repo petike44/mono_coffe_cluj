@@ -6,6 +6,9 @@
 	--line: #d9d9d9;
 	--accent: #8c7a5b;
 	--accent-hover: #756349;
+	--status-open: #1f8d50;
+	--status-warning: #bf8a1b;
+	--status-closed: #c03f3f;
 	--header-height: 78px;
 }
 
@@ -132,7 +135,7 @@ h3 {
 	display: grid;
 	grid-template-columns: minmax(0, 2.9fr) minmax(260px, 1fr);
 	gap: 22px;
-	align-items: stretch;
+	align-items: start;
 }
 
 .hero-visual {
@@ -186,6 +189,42 @@ h3 {
 	flex-direction: column;
 	gap: 6px;
 	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.hero-status {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0;
+	border-radius: 12px;
+	padding: 10px 12px;
+	margin-bottom: 4px;
+	border: 1px solid currentColor;
+	background: #ffffff;
+}
+
+.hero-status-title {
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+.hero-status-sub {
+	font-size: 0.85rem;
+	line-height: 1.2;
+	opacity: 0.95;
+}
+
+.hero-status-open {
+	color: var(--status-open);
+}
+
+.hero-status-warning {
+	color: var(--status-warning);
+}
+
+.hero-status-closed {
+	color: var(--status-closed);
 }
 
 .hero-clock {
