@@ -100,3 +100,44 @@ if (heroStatus && heroStatusTitle && heroStatusSub) {
 	updateHeroStatus();
 	setInterval(updateHeroStatus, 60 * 1000);
 }
+
+const aboutSlider = document.querySelector('.about-photo-slider');
+
+if (aboutSlider) {
+	const maxSlides = 3;
+	let currentSlide = 1;
+	let activeImageIndex = 0;
+	const aboutSlideImages = Array.from(aboutSlider.querySelectorAll('.about-slide-image'));
+
+	const preloadImages = () => {
+		for (let i = 1; i <= maxSlides; i += 1) {
+			const img = new Image();
+			img.src = `photos/slideshow/photo_${i}.png`;
+		}
+	};
+
+	if (aboutSlideImages.length >= 2) {
+		aboutSlideImages[0].classList.add('is-active');
+
+		const showNextSlide = () => {
+			currentSlide = currentSlide >= maxSlides ? 1 : currentSlide + 1;
+
+			const activeImage = aboutSlideImages[activeImageIndex];
+			const nextImageIndex = activeImageIndex === 0 ? 1 : 0;
+			const nextImage = aboutSlideImages[nextImageIndex];
+
+			nextImage.src = `photos/slideshow/photo_${currentSlide}.png`;
+			nextImage.alt = `Cadru Mono Coffee ${currentSlide}`;
+
+			requestAnimationFrame(() => {
+				nextImage.classList.add('is-active');
+				activeImage.classList.remove('is-active');
+			});
+
+			activeImageIndex = nextImageIndex;
+		};
+
+		preloadImages();
+		setInterval(showNextSlide, 5600);
+	}
+}
