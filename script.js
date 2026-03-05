@@ -80,14 +80,14 @@ if (heroStatus && heroStatusTitle && heroStatusSub) {
 
 			if (minutesToClose <= 30) {
 				heroStatus.classList.add('hero-status-warning');
-				heroStatusTitle.textContent = 'Închide în curând';
-				heroStatusSub.textContent = `Mai sunt ${minutesToClose} min până la închidere.`;
+				heroStatusTitle.textContent = 'Închidem curând';
+				heroStatusSub.textContent = `Programul de azi se termină în ${minutesToClose} min.`;
 				return;
 			}
 
 			heroStatus.classList.add('hero-status-open');
-			heroStatusTitle.textContent = 'Deschis';
-			heroStatusSub.textContent = 'Suntem în program acum.';
+			heroStatusTitle.textContent = 'Deschis acum';
+			heroStatusSub.textContent = 'Comenzile se preiau în acest moment.';
 			return;
 		}
 
