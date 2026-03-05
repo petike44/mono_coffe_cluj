@@ -217,16 +217,27 @@ h3 {
 }
 
 .hero-info {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	height: 100%;
+
+	text-align: center;
+}
+
+.hero-info-card {
 	border: 1px solid var(--line);
 	border-radius: 18px;
 	padding: 22px 18px 14px;
 	background: var(--bg);
-	text-align: center;
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
-	height: 100%;
 	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.hero-info-map-wrap {
+	flex: 1;
 }
 
 .hero-status {
@@ -321,7 +332,7 @@ h3 {
 }
 
 .hero-map-link {
-	margin-top: 4px;
+	margin-top: auto;
 	font-weight: 600;
 	color: var(--accent);
 	font-size: 0.95rem;
