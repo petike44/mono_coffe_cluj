@@ -55,7 +55,7 @@ h3 {
 }
 
 .section {
-	padding: 88px 0;
+	padding: 22px 0;
 }
 
 .site-header {
@@ -162,11 +162,20 @@ h3 {
 }
 
 .hero {
-	padding: 22px 0 30px;
+	padding: 22px 0;
 	background: linear-gradient(180deg, var(--brand-green-soft) 0%, #f6f1e8 100%);
 }
 
+/* Keep section rhythm visually continuous across the page */
+.section + .section {
+	padding-top: 0;
+}
+
 .hero .container {
+	width: min(1360px, 96%);
+}
+
+.about .container {
 	width: min(1360px, 96%);
 }
 
@@ -382,6 +391,65 @@ h3 {
 	margin-bottom: 14px;
 }
 
+.about-duo-layout {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 22px;
+	align-items: stretch;
+}
+
+.about-side-stack {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	gap: 22px;
+}
+
+.about-contact-card,
+.about-photo-card {
+	border: 1px solid var(--line);
+	border-radius: 18px;
+	padding: clamp(20px, 2.2vw, 30px);
+	background: var(--bg);
+	box-shadow: 0 10px 28px rgba(47, 35, 24, 0.08);
+}
+
+.about-contact-card h3 {
+	font-size: clamp(1.42rem, 2.2vw, 1.9rem);
+	margin-bottom: 10px;
+}
+
+.about-contact-note {
+	font-size: 0.98rem;
+	line-height: 1.6;
+	margin-bottom: 16px;
+}
+
+.about-contact-items {
+	margin-bottom: 18px;
+}
+
+.about-contact-items p {
+	margin-bottom: 6px;
+}
+
+.about-contact-items strong {
+	color: var(--text);
+}
+
+.about-photo-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.about-photo-grid img {
+	height: 130px;
+	object-fit: cover;
+	border-radius: 12px;
+	border: 1px solid var(--line);
+}
+
 .about-showcase {
 	border: 1px solid var(--line);
 	border-radius: 18px;
@@ -448,7 +516,7 @@ h3 {
 }
 
 .quality {
-	background: var(--bg-soft);
+	background: transparent;
 }
 
 .quality-grid {
@@ -504,7 +572,7 @@ h3 {
 }
 
 .reviews {
-	background: var(--bg-soft);
+	background: transparent;
 }
 
 .review-slider {
@@ -686,12 +754,21 @@ h3 {
 	}
 
 	.split-layout,
+	.about-duo-layout,
 	.about-highlights,
 	.quality-grid,
 	.drink-grid,
 	.footer-inner,
 	.menu-grid {
 		grid-template-columns: 1fr;
+	}
+
+	.about-side-stack {
+		grid-template-rows: auto;
+	}
+
+	.about-showcase {
+		order: -1;
 	}
 
 	.review-slider {
@@ -701,7 +778,7 @@ h3 {
 
 @media (max-width: 640px) {
 	.section {
-		padding: 66px 0;
+		padding: 18px 0;
 	}
 
 	.hero-visual-content h1 {
@@ -714,6 +791,14 @@ h3 {
 
 	.hero-info-time {
 		font-size: 2rem;
+	}
+
+	.about-photo-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.about-photo-grid img {
+		height: 180px;
 	}
 
 	.btn,
