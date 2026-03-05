@@ -244,28 +244,20 @@ h3 {
 .hero-status {
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
-	gap: 10px;
+	justify-content: center;
+	gap: 0;
 	border-radius: 12px;
 	padding: 11px 12px;
 	margin-top: 2px;
 	border: 1px solid transparent;
-	text-align: left;
-}
-
-.hero-status-dot {
-	width: 10px;
-	height: 10px;
-	border-radius: 999px;
-	flex-shrink: 0;
-	background: currentColor;
-	box-shadow: 0 0 0 5px color-mix(in srgb, currentColor 16%, transparent);
+	text-align: center;
 }
 
 .hero-status-text {
 	display: flex;
 	flex-direction: column;
 	gap: 2px;
+	align-items: center;
 }
 
 .hero-status-title {
