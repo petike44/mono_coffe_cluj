@@ -141,3 +141,49 @@ if (aboutSlider) {
 		setInterval(showNextSlide, 5600);
 	}
 }
+
+const aboutProcess = document.querySelector('.about-showcase-process');
+
+if (aboutProcess) {
+	const processSteps = Array.from(aboutProcess.querySelectorAll('.about-process-step'));
+
+	if (processSteps.length) {
+		let currentStep = 0;
+		let autoplay;
+
+		const setStep = (index) => {
+			const safeIndex = ((index % processSteps.length) + processSteps.length) % processSteps.length;
+
+			processSteps.forEach((step, i) => {
+				step.classList.toggle('is-active', i === safeIndex);
+			});
+
+			currentStep = safeIndex;
+		};
+
+		const restartAutoplay = () => {
+			clearInterval(autoplay);
+			autoplay = setInterval(() => {
+				setStep(currentStep + 1);
+			}, 5200);
+		};
+
+		processSteps.forEach((step, index) => {
+			step.addEventListener('click', () => {
+				setStep(index);
+				restartAutoplay();
+			});
+		});
+
+		aboutProcess.addEventListener('mouseenter', () => {
+			clearInterval(autoplay);
+		});
+
+		aboutProcess.addEventListener('mouseleave', () => {
+			restartAutoplay();
+		});
+
+		setStep(0);
+		restartAutoplay();
+	}
+}
