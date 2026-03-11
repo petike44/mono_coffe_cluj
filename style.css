@@ -889,6 +889,13 @@ h3 {
 	width: min(1360px, 96%);
 }
 
+.top-three-subtitle {
+	max-width: 58ch;
+	margin: -2px 0 18px;
+	color: var(--muted);
+	font-size: 1rem;
+}
+
 .drink-photo-placeholder {
 	width: 100%;
 	aspect-ratio: 16 / 10;
