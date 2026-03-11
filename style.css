@@ -903,31 +903,24 @@ h3 {
 	border: 1px solid var(--line);
 }
 
-.reviews {
-	background: transparent;
-}
-
 .review-slider {
-	position: relative;
-	min-height: 150px;
+	overflow: hidden;
 	margin-bottom: 18px;
 }
 
-.review-slide {
-	position: absolute;
-	inset: 0;
-	opacity: 0;
-	transform: translateY(8px);
-	transition: opacity 0.35s ease, transform 0.35s ease;
-	border: 1px solid var(--line);
-	border-radius: 14px;
-	padding: 24px;
-	background: var(--bg);
+.review-track {
+	display: flex;
+	transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.review-slide.active {
-	opacity: 1;
-	transform: translateY(0);
+.review-slide {
+	flex: none;
+	margin-right: 20px;
+	border: 1px solid var(--line);
+	border-radius: 16px;
+	padding: 32px 36px;
+	background: var(--bg);
+	box-sizing: border-box;
 }
 
 .review-slide p {
@@ -940,9 +933,56 @@ h3 {
 }
 
 .slider-controls {
+	display: none;
+}
+
+.review-nav {
+	display: none;
+}
+
+.review-slider-wrap {
+	position: relative;
+}
+
+.review-slider-wrap .review-slider {
+	width: 100%;
+}
+
+.review-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 2;
+	width: 44px;
+	height: 44px;
+	border-radius: 10px;
+	border: none;
+	background: var(--accent);
+	color: var(--bg);
+	cursor: pointer;
 	display: flex;
+	align-items: center;
 	justify-content: center;
-	gap: 10px;
+	transition: background 0.2s, transform 0.15s;
+}
+
+#review-prev {
+	left: -22px;
+}
+
+#review-next {
+	right: -22px;
+}
+
+.review-btn:hover {
+	background: var(--accent-hover);
+	transform: translateY(-50%) scale(1.08);
+}
+
+.review-btn svg {
+	width: 18px;
+	height: 18px;
+	flex-shrink: 0;
 }
 
 .dot {
@@ -1105,10 +1145,6 @@ h3 {
 
 	.about-process-visual {
 		height: 240px;
-	}
-
-	.review-slider {
-		min-height: 190px;
 	}
 }
 

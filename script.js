@@ -1,32 +1,77 @@
-const slides = document.querySelectorAll('.review-slide');
-const dots = document.querySelectorAll('.dot');
 
-if (slides.length && dots.length) {
-	let current = 0;
+const reviewTrack = document.querySelector('.review-track');
 
-	const showSlide = (index) => {
-		slides.forEach((slide, i) => {
-			slide.classList.toggle('active', i === index);
-		});
+if (reviewTrack) {
+	const realSlides = Array.from(reviewTrack.querySelectorAll('.review-slide'));
+	const total = realSlides.length;
+	const GAP = 20;
 
-		dots.forEach((dot, i) => {
-			dot.classList.toggle('active', i === index);
-		});
+	// Build infinite loop: [clone 0..9] [real 0..9] [clone 0..9]
+	realSlides.slice().reverse().forEach(s => reviewTrack.prepend(s.cloneNode(true)));
+	realSlides.forEach(s => reviewTrack.appendChild(s.cloneNode(true)));
 
-		current = index;
+	let index = total; // start at first real slide
+	let moving = false;
+
+	const getVisible = () => (window.innerWidth <= 768 ? 1 : 3);
+
+	const getSlideWidth = () => {
+		const vis = getVisible();
+		const containerWidth = reviewTrack.parentElement.offsetWidth;
+		return (containerWidth - GAP * (vis - 1)) / vis;
 	};
 
-	dots.forEach((dot, index) => {
-		dot.addEventListener('click', () => showSlide(index));
-	});
+	const applyWidths = () => {
+		const w = getSlideWidth();
+		reviewTrack.querySelectorAll('.review-slide').forEach(s => { s.style.width = w + 'px'; });
+	};
 
-	setInterval(() => {
-		const next = (current + 1) % slides.length;
-		showSlide(next);
-	}, 4500);
+	const moveTo = (i, animate = true) => {
+		reviewTrack.style.transition = animate
+			? 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)'
+			: 'none';
+		reviewTrack.style.transform = `translateX(-${i * (getSlideWidth() + GAP)}px)`;
+	};
+
+	applyWidths();
+	moveTo(index, false);
+
+	const goTo = (i) => {
+		if (moving) return;
+		moving = true;
+		index = i;
+		moveTo(index);
+
+		const onEnd = () => {
+			reviewTrack.removeEventListener('transitionend', onEnd);
+			if (index >= total * 2) {
+				index -= total;
+				moveTo(index, false);
+			} else if (index < total) {
+				index += total;
+				moveTo(index, false);
+			}
+			moving = false;
+		};
+		reviewTrack.addEventListener('transitionend', onEnd);
+	};
+
+	let autoTimer = setInterval(() => goTo(index + 1), 5000);
+
+	const resetTimer = () => {
+		clearInterval(autoTimer);
+		autoTimer = setInterval(() => goTo(index + 1), 5000);
+	};
+
+	document.querySelector('#review-prev')?.addEventListener('click', () => { goTo(index - 1); resetTimer(); });
+	document.querySelector('#review-next')?.addEventListener('click', () => { goTo(index + 1); resetTimer(); });
+
+	window.addEventListener('resize', () => { applyWidths(); moveTo(index, false); });
 }
 
-const heroStatus = document.querySelector('#hero-status');
+
+
+
 const heroStatusTitle = document.querySelector('#hero-status-title');
 const heroStatusSub = document.querySelector('#hero-status-sub');
 
