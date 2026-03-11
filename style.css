@@ -995,13 +995,14 @@ h3 {
 }
 
 .review-track {
+	--review-gap: 20px;
 	display: flex;
 	transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .review-slide {
 	flex: none;
-	margin-right: 20px;
+	margin-right: var(--review-gap);
 	border: 1px solid var(--line);
 	border-radius: 16px;
 	padding: 32px 36px;
@@ -1032,6 +1033,29 @@ h3 {
 
 .review-slider-wrap .review-slider {
 	width: 100%;
+}
+
+.review-mobile-dots {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin-top: 12px;
+}
+
+.review-mobile-dot {
+	width: 8px;
+	height: 8px;
+	border: 0;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--muted) 36%, #ffffff);
+	cursor: pointer;
+	transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.review-mobile-dot.is-active {
+	background: var(--accent);
+	transform: scale(1.2);
 }
 
 .review-btn {
@@ -1232,6 +1256,18 @@ h3 {
 	.about-process-visual {
 		height: 240px;
 	}
+
+	#review-prev {
+		left: 8px;
+	}
+
+	#review-next {
+		right: 8px;
+	}
+
+	.review-slide {
+		padding: 26px 28px;
+	}
 }
 
 @media (max-width: 640px) {
@@ -1273,6 +1309,22 @@ h3 {
 		right: 8px;
 		bottom: 8px;
 		padding: 8px 10px;
+	}
+
+	.review-btn {
+		display: none;
+	}
+
+	.review-slide {
+		padding: 22px 20px;
+	}
+
+	.review-slide p {
+		font-size: 0.97rem;
+	}
+
+	.review-mobile-dots {
+		display: flex;
 	}
 
 	.btn,
