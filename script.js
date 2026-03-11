@@ -72,6 +72,7 @@ if (reviewTrack) {
 
 
 
+const heroStatus = document.querySelector('#hero-status');
 const heroStatusTitle = document.querySelector('#hero-status-title');
 const heroStatusSub = document.querySelector('#hero-status-sub');
 
