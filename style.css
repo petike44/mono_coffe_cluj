@@ -28,8 +28,51 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	color: var(--text);
 	background-color: var(--bg);
-	background-image: radial-gradient(circle at 8% 12%, var(--brand-green-soft) 0%, transparent 40%);
+	background-image: linear-gradient(180deg, #fefcf8 0%, #f6f1e8 52%, #f9f5ee 100%);
+	position: relative;
+	overflow-x: hidden;
 	line-height: 1.6;
+}
+
+body::before,
+body::after {
+	content: '';
+	position: fixed;
+	inset: -12% -10%;
+	pointer-events: none;
+	z-index: -1;
+}
+
+body::before {
+	background:
+		radial-gradient(34rem 26rem at 6% 10%, rgba(79, 109, 73, 0.16) 0%, transparent 68%),
+		radial-gradient(26rem 20rem at 92% 18%, rgba(122, 90, 58, 0.11) 0%, transparent 70%),
+		radial-gradient(30rem 22rem at 28% 88%, rgba(216, 202, 180, 0.2) 0%, transparent 72%),
+		radial-gradient(34rem 24rem at 84% 88%, rgba(79, 109, 73, 0.12) 0%, transparent 72%);
+	filter: blur(2px);
+	animation: bg-drift 22s ease-in-out infinite alternate;
+}
+
+body::after {
+	inset: 0;
+	background-image: repeating-linear-gradient(
+		135deg,
+		rgba(122, 90, 58, 0.03) 0,
+		rgba(122, 90, 58, 0.03) 1px,
+		transparent 1px,
+		transparent 11px
+	);
+	opacity: 0.22;
+}
+
+@keyframes bg-drift {
+	0% {
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+
+	100% {
+		transform: translate3d(-2%, 1.5%, 0) scale(1.04);
+	}
 }
 
 img {
@@ -809,6 +852,10 @@ h3 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+	body::before {
+		animation: none;
+	}
+
 	.about-showcase,
 	.about-showcase h2,
 	.about-process-title,
