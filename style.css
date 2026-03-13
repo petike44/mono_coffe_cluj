@@ -783,13 +783,16 @@ h3 {
 
 .about-wide-highlights {
 	margin-top: 22px;
-	border: 1px solid #bfd4ca;
+	border: 1px solid var(--line);
 	border-radius: 24px;
-	padding: clamp(16px, 2.2vw, 22px);
-	background: linear-gradient(165deg, #e8f4ef 0%, #dcebe5 100%);
-	box-shadow: 0 12px 28px rgba(32, 66, 57, 0.12);
+	padding: clamp(16px, 2.2vw, 24px);
+	background: var(--bg);
+	box-shadow: 0 8px 22px rgba(47, 35, 24, 0.06);
 	animation: about-showcase-in 760ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
-	align-self: start;
+	align-self: stretch;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
 }
 
 .about-right-stack {
@@ -802,7 +805,7 @@ h3 {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 18px;
-	align-items: stretch;
+	align-items: start;
 	margin-top: 0;
 	grid-column: 1 / -1;
 }
@@ -815,28 +818,19 @@ h3 {
 .about-side-feature {
 	position: relative;
 	overflow: hidden;
-	border: 1px solid #8a6040;
+	border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
 	border-radius: 24px;
-	padding: clamp(22px, 2.4vw, 28px);
-	background: linear-gradient(160deg, #2e1a0e 0%, #4a2810 100%);
-	box-shadow: 0 12px 28px rgba(40, 18, 6, 0.26);
+	padding: clamp(22px, 2.4vw, 30px);
+	background: linear-gradient(160deg, var(--text) 0%, #4a3020 100%);
+	box-shadow: 0 14px 32px rgba(47, 35, 24, 0.22);
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
+	gap: 10px;
 	animation: about-showcase-in 860ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
-	align-self: stretch;
 }
 
 .about-side-feature::before {
-	content: '';
-	position: absolute;
-	top: -60px;
-	right: -60px;
-	width: 240px;
-	height: 240px;
-	border-radius: 999px;
-	background: radial-gradient(circle, rgba(200, 140, 60, 0.14) 0%, transparent 70%);
-	pointer-events: none;
+	display: none;
 }
 
 .about-side-feature > * {
@@ -846,23 +840,61 @@ h3 {
 
 .asf-title {
 	font-family: 'Playfair Display', serif;
-	font-size: clamp(1.5rem, 2.4vw, 2rem);
-	line-height: 1.12;
+	font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+	line-height: 1.1;
 	color: #fdf4e7;
 	margin-bottom: 0;
 }
 
 .about-side-feature .about-kicker {
-	color: #c8906a;
-	border-color: rgba(180, 110, 60, 0.3);
-	background: rgba(255, 255, 255, 0.06);
+	color: color-mix(in srgb, var(--accent) 70%, #c8a070);
+	border-color: rgba(200, 150, 80, 0.3);
+	background: rgba(255, 255, 255, 0.07);
 	margin-bottom: 0;
 }
 
 .about-side-feature-text {
-	color: #a07858;
+	color: #a08060;
 	line-height: 1.55;
 	margin-bottom: 0;
+}
+
+.asf-numbered-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.asf-numbered-list li {
+	display: flex;
+	align-items: baseline;
+	gap: 14px;
+	padding: 10px 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.asf-numbered-list li:last-child {
+	border-bottom: none;
+}
+
+.asf-num {
+	flex-shrink: 0;
+	font-family: 'Playfair Display', serif;
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: color-mix(in srgb, var(--accent) 80%, #c8a070);
+	line-height: 1;
+	min-width: 28px;
+}
+
+.asf-num-text {
+	color: #c8a882;
+	font-size: 0.94rem;
+	line-height: 1.5;
+	font-weight: 500;
 }
 
 .about-side-feature-list {
@@ -877,7 +909,7 @@ h3 {
 .about-side-feature-list li {
 	position: relative;
 	padding-left: 16px;
-	color: #8a6a4a;
+	color: var(--muted);
 	font-weight: 500;
 	line-height: 1.4;
 	font-size: 0.95rem;
@@ -891,26 +923,27 @@ h3 {
 	width: 6px;
 	height: 6px;
 	border-radius: 999px;
-	background: #8a6040;
+	background: var(--accent);
 }
 
 .about-side-feature .btn,
 .about-side-feature .asf-cta {
-	margin-top: auto;
 	align-self: flex-start;
-	background: transparent;
-	border: 1px solid rgba(200, 144, 90, 0.5);
-	color: #e0b07a;
+	background: rgba(255, 255, 255, 0.10);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	color: #f2e4ce;
 	font-weight: 600;
-	padding: 10px 20px;
+	padding: 10px 22px;
+	backdrop-filter: blur(4px);
 }
 
 .about-side-feature .btn:hover,
 .about-side-feature .asf-cta:hover {
-	background: rgba(200, 144, 90, 0.12);
-	border-color: #c8906a;
-	color: #f0c090;
+	background: rgba(255, 255, 255, 0.17);
+	border-color: rgba(255, 255, 255, 0.3);
+	color: #fff;
 	transform: translateY(-1px);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 .about-highlight {
@@ -920,16 +953,32 @@ h3 {
 	background: var(--bg-soft);
 }
 
+.awh-title {
+	font-family: 'Playfair Display', serif;
+	font-size: clamp(1.2rem, 1.9vw, 1.55rem);
+	line-height: 1.2;
+	color: var(--text);
+	margin-bottom: 2px;
+}
+
 .about-showcase .about-highlight,
 .about-wide-highlights .about-highlight {
-	background: linear-gradient(180deg, #f3fbf7 0%, #ecf6f1 100%);
-	border-color: #bdd4ca;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+	background: var(--bg-soft);
+	border: 1px solid var(--line);
+	border-top: 3px solid var(--line);
+	border-radius: 14px;
+	box-shadow: none;
 	padding: 16px;
 	transform: translateY(12px);
 	opacity: 0;
 	animation: about-card-in 700ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-	transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+	transition: border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+.about-wide-highlights .about-highlight:hover {
+	transform: translateY(-2px);
+	border-top-color: var(--accent);
+	box-shadow: 0 8px 20px rgba(47, 35, 24, 0.1);
 }
 
 .about-showcase .about-highlight h3,
@@ -945,35 +994,30 @@ h3 {
 }
 
 .about-highlight-meta {
-	margin-bottom: 6px;
-	font-size: 0.76rem;
+	margin-bottom: 5px;
+	font-size: 0.74rem;
 	font-weight: 700;
-	letter-spacing: 0.06em;
+	letter-spacing: 0.07em;
 	text-transform: uppercase;
-	color: #2f6a5d;
+	color: var(--muted);
 }
 
 .about-highlight-tag {
 	display: inline-flex;
 	align-items: center;
 	margin-top: 10px;
-	padding: 4px 10px;
+	padding: 3px 9px;
 	border-radius: 999px;
-	border: 1px solid #9fbeb3;
-	background: #e8f3ee;
-	font-size: 0.74rem;
+	border: 1px solid var(--line);
+	background: var(--bg);
+	font-size: 0.72rem;
 	font-weight: 700;
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
-	color: #2e6559;
+	color: var(--accent);
 }
 
-.about-showcase .about-highlight:hover,
-.about-wide-highlights .about-highlight:hover {
-	transform: translateY(-3px);
-	border-color: #7ea79a;
-	box-shadow: 0 10px 22px rgba(33, 77, 66, 0.16);
-}
+/* hover handled per-container above */
 
 .about-showcase .about-highlight:nth-child(1),
 .about-wide-highlights .about-highlight:nth-child(1) {
