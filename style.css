@@ -781,6 +781,85 @@ h3 {
 	gap: 14px;
 }
 
+.about-wide-highlights {
+	margin-top: 22px;
+	border: 1px solid color-mix(in srgb, var(--line) 82%, #ffffff);
+	border-radius: 24px;
+	padding: clamp(16px, 2.2vw, 22px);
+	background: linear-gradient(180deg, #f7efe2 0%, #f2e8d9 100%);
+	box-shadow: 0 10px 26px rgba(47, 35, 24, 0.08);
+	animation: about-showcase-in 760ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.about-bottom-row {
+	display: grid;
+	grid-template-columns: minmax(0, 2.2fr) minmax(260px, 1fr);
+	gap: 18px;
+	align-items: stretch;
+	margin-top: 22px;
+	grid-column: 1 / -1;
+}
+
+.about-bottom-row .about-wide-highlights {
+	margin-top: 0;
+}
+
+.about-side-feature {
+	border: 1px solid color-mix(in srgb, var(--line) 82%, #ffffff);
+	border-radius: 24px;
+	padding: clamp(18px, 2.2vw, 24px);
+	background: linear-gradient(180deg, #f8f1e6 0%, #f1e6d4 100%);
+	box-shadow: 0 10px 24px rgba(47, 35, 24, 0.08);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	animation: about-showcase-in 860ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.about-side-feature h3 {
+	font-size: clamp(1.2rem, 2.1vw, 1.6rem);
+	line-height: 1.2;
+	margin-bottom: 2px;
+}
+
+.about-side-feature-text {
+	color: #695d4d;
+	line-height: 1.55;
+	margin-bottom: 2px;
+}
+
+.about-side-feature-list {
+	list-style: none;
+	display: grid;
+	gap: 8px;
+	margin: 2px 0 8px;
+	padding: 0;
+}
+
+.about-side-feature-list li {
+	position: relative;
+	padding-left: 18px;
+	color: #64584b;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.about-side-feature-list li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 8px;
+	width: 7px;
+	height: 7px;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--brand-green) 76%, #2a3c27);
+}
+
+.about-side-feature .btn {
+	margin-top: auto;
+	align-self: flex-start;
+}
+
 .about-highlight {
 	border: 1px solid var(--line);
 	border-radius: 14px;
@@ -788,7 +867,8 @@ h3 {
 	background: var(--bg-soft);
 }
 
-.about-showcase .about-highlight {
+.about-showcase .about-highlight,
+.about-wide-highlights .about-highlight {
 	background: linear-gradient(180deg, #f8f1e6 0%, #f3ebde 100%);
 	border-color: color-mix(in srgb, var(--line) 72%, #ffffff);
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
@@ -799,31 +879,61 @@ h3 {
 	transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
 }
 
-.about-showcase .about-highlight h3 {
+.about-showcase .about-highlight h3,
+.about-wide-highlights .about-highlight h3 {
 	font-size: 1.04rem;
 	margin-bottom: 6px;
 }
 
-.about-showcase .about-highlight p {
+.about-showcase .about-highlight p,
+.about-wide-highlights .about-highlight p {
 	font-size: 0.98rem;
 	line-height: 1.45;
 }
 
-.about-showcase .about-highlight:hover {
+.about-highlight-meta {
+	margin-bottom: 6px;
+	font-size: 0.76rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: color-mix(in srgb, var(--brand-green) 64%, #22311f);
+}
+
+.about-highlight-tag {
+	display: inline-flex;
+	align-items: center;
+	margin-top: 10px;
+	padding: 4px 10px;
+	border-radius: 999px;
+	border: 1px solid color-mix(in srgb, var(--brand-green) 26%, var(--line));
+	background: color-mix(in srgb, var(--brand-green-soft) 68%, #ffffff);
+	font-size: 0.74rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: color-mix(in srgb, var(--brand-green) 78%, #24331f);
+}
+
+.about-showcase .about-highlight:hover,
+.about-wide-highlights .about-highlight:hover {
 	transform: translateY(-3px);
 	border-color: color-mix(in srgb, var(--brand-green) 30%, var(--line));
 	box-shadow: 0 10px 22px rgba(47, 35, 24, 0.12);
 }
 
-.about-showcase .about-highlight:nth-child(1) {
+.about-showcase .about-highlight:nth-child(1),
+.about-wide-highlights .about-highlight:nth-child(1) {
 	animation-delay: 120ms;
 }
 
-.about-showcase .about-highlight:nth-child(2) {
+.about-showcase .about-highlight:nth-child(2),
+.about-wide-highlights .about-highlight:nth-child(2) {
 	animation-delay: 220ms;
 }
 
-.about-showcase .about-highlight:nth-child(3) {
+.about-showcase .about-highlight:nth-child(3),
+.about-wide-highlights .about-highlight:nth-child(3) {
 	animation-delay: 320ms;
 }
 
@@ -1243,6 +1353,10 @@ h3 {
 
 	.about-side-stack {
 		grid-template-rows: auto;
+	}
+
+	.about-bottom-row {
+		grid-template-columns: 1fr;
 	}
 
 	.about-contact-card {
