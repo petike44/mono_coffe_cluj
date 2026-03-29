@@ -230,7 +230,7 @@ if (aboutSlider) {
 	const preloadImages = () => {
 		for (let i = 1; i <= maxSlides; i += 1) {
 			const img = new Image();
-			img.src = `photos/slideshow/photo_${i}.png`;
+			img.src = `photos/slideshow/photo_${i}.webp`;
 		}
 	};
 
@@ -244,7 +244,7 @@ if (aboutSlider) {
 			const nextImageIndex = activeImageIndex === 0 ? 1 : 0;
 			const nextImage = aboutSlideImages[nextImageIndex];
 
-			nextImage.src = `photos/slideshow/photo_${currentSlide}.png`;
+			nextImage.src = `photos/slideshow/photo_${currentSlide}.webp`;
 			nextImage.alt = `Cadru Mono Coffee ${currentSlide}`;
 
 			requestAnimationFrame(() => {
